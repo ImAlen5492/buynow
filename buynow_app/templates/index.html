@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\css\style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+
+    <title>Document</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@200;500&display=swap');
+      .card-container:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+      }
+</style>
+    
+
+</head>
+<body>
+      <nav style="height:70px;" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+           <a class="navbar-brand" href="{% url 'home' %}"><i style="margin-right:5px;" class="fa fa-cart-plus"></i>BuyNow</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a>
+                {% if request.user.is_authenticated %}
+                    <a class="nav-link" aria-current="page" href="#"><i class="fa fa-user"></i> {{request.user}}</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+                {% else %}
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a>
+                    <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-users"></i> Register</a>
+                {% endif %}
+                    <a class="nav-link" href="{% url 'collections' %}"><i class="fa fa-cubes"></i> Collections</a>
+                    <a class="nav-link" href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+<div style="margin-top:70px;" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\Apple-iPhone.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\fwebp (1).webp'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\fwebp.webp' %}"class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\7995937.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div style="margin-top:80px; margin-bottom:50px;" class="container px-4">
+    <div class="row gx-5">
+      <div class="col">
+       <div style=" font-size:20px; font-family: 'Poppins', sans-serif;" ><i class="fa-sharp fa-solid fa-check" style="margin-right:10px;font-size: 30px;"></i><strong>Quality Products</strong></div>
+      </div>
+      <div class="col">
+        <div style="font-size:20px; font-family: 'Poppins', sans-serif;" ><i class="fa-solid fa-truck-fast" style="margin-right:10px; font-size: 30px;"></i><strong>Free Shipping</strong></div>
+      </div>
+      <div class="col">
+        <div style="font-size:20px; font-family: 'Poppins', sans-serif;" ><i class="fa-solid fa-right-left" style="margin-right:10px; font-size: 30px;"></i><strong>14-Day Return</strong></div>
+       </div>
+       <div class="col">
+         <div style="font-size:20px; font-family: 'Poppins', sans-serif;" ><i class="fa-solid fa-phone-volume" style="margin-right:10px; font-size: 30px;"></i><strong>24/7 Support</strong></div>
+       </div>
+    </div>
+  </div>
+
+
+ 
+<div style="margin-top: 60px; display: flex; justify-content: space-around; width: 100%; box-sizing: border-box;">
+
+  <div class="card-container" style="width: 450px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\20230428114633.png'%}" alt="Card 1 Image" style="height: 250px; max-width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">Monitors</p>
+  </div>
+
+  <div class="card-container" style="width: 450px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\wallpaperflare.com_wallpaper.jpg' %}" alt="Card 2 Image" style="height: 250px; max-width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">ATX Towers</p>
+  </div>
+
+  <div class="card-container" style="width: 460px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\h732.png' %}" alt="Card 2 Image" style="height: 250px; width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">Phones</p>
+  </div>
+
+</div>
+
+<div style="margin-top: 10px; margin-bottom: 60px; display: flex; justify-content: space-around; width: 100%; box-sizing: border-box;">
+
+  <div class="card-container" style="width: 450px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\cat-4.webp' %}" alt="Card 4 Image" style="height: 250px; max-width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">Mice</p>
+  </div>
+
+  <div class="card-container" style="width: 450px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\image_1669397662549.jpg' %}" alt="Card 5 Image" style="height: 250px; max-width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">Keyboards</p>
+  </div>
+
+  <div class="card-container" style="width: 450px; padding: 30px; margin: 10px 5px;">
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\d84c4562060a959568255d06aa66f8a6ffa18cd4.webp' %}" alt="Card 6 Image" style="height: 250px; max-width: 100%; box-shadow: 5px 5px 20px 8px rgba(0, 0, 0, 0.1);">
+    <p style="font-weight: 900; font-size: 20px; font-family: 'Poppins', sans-serif;">Ps5</p>
+  </div>
+
+</div>
+
+
+  <div style="  margin-top: 60px; margin-bottom: 60px; display: flex; justify-content: space-around; width: 100%; box-sizing: border-box;">
+
+    <div style="background-color: #efefef; height: 200px; width: 700px; padding: 30px; margin: 10px; box-shadow: 3px 3px 10px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center;">
+
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\h525 (1).png' %}" alt="Card 7 Image" style="margin-bottom: 5px; height: 160px; width: 30%;">
+  
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; margin-left: 20px;">
+          <p style="font-weight: 900; text-align:end; font-size:15.8px; font-family: 'Poppins', sans-serif;">EXTRAS NOW IN STOCK!</p>
+          <p style=" text-align:end; font-size:24.8px; font-family:Poppins, sans-serif;">CASE Collections</p>
+          <a href="{% url 'collections' %}" style="margin-left: 300px; width: 120px; font-family: 'Poppins', sans-serif; padding: 15px; background-color: #66b2b2; color: white; border: none; border-radius: 50px; cursor: pointer; text-align: center; text-decoration: none;">Shop Now</a>
+      </div>
+  
+  </div>
+  
+    
+  <div style=" background-color: #efefef; height: 200px; width: 700px; padding: 30px; margin: 10px; box-shadow: 3px 3px 10px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center;">
+
+    <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; margin-right: 20px;">
+      <p style="font-weight: 900;  font-size:15.8px; font-family: 'Poppins', sans-serif;">GET YOUR GAME ON.</p>
+      <p style="  font-size:24.8px; font-family:Poppins, sans-serif;">The best from Asus</p>
+      <a href="{% url 'collections' %}" style="margin-left: 300px; width: 120px; font-family: 'Poppins', sans-serif; padding: 15px; background-color: #66b2b2; color: white; border: none; border-radius: 50px; cursor: pointer; text-align: center; text-decoration: none;">Shop Now</a>
+    </div>
+
+    <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\images\h732 (1).png' %}" alt="Card 8 Image" style="height: 200px; max-width: 100%;">
+
+</div>
+  </div>
+
+  
+  <div style=" margin-top:150px; margin-bottom:50px; background-color: #efefef; width:100%; height:150px; box-shadow: 3px 3px 10px 10px rgba(0, 0, 0, 0.1);" class="container-fluid">
+    <div class="row">
+        <h3 style=" font-size:24.8px; color:  rgb(0, 0, 0); text-align:center; margin-top:50px">You're in Good Company </h3>
+        
+    </div>
+  </div>
+
+
+  <div style="  margin-top:150px;  margin-bottom:160px; display: flex; flex-wrap: wrap; justify-content:space-between">
+
+    <!-- First Row -->
+    
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com.png' %}" alt="Image 1" style="width: 200px; height: 100px; object-fit: cover;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (1).png' %}" alt="Image 2"  style="width: 180px;height: 100px;  object-fit: cover;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (2).png' %}" alt="Image 3"  style="width: 180px; height: 100px  ;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (3).png' %}" alt="Image 3"  style="  width: 180px; height: 80px; ">
+    </div>
+  
+    <!-- Second Row -->
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (4).png' %}" alt="Image 4" style="width: 180px; height: 100px;  ">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (6).png' %}" alt="Image 5" style="width: 180px; height: 100px; ">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (7).png' %}" alt="Image 6" style="width: 180px; height: 150px;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (5).png' %}" alt="Image 6" style="width: 180px; height: 150px;">
+    </div>
+  
+    <!-- Third Row -->
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (9).png' %}" alt="Image 7" style="width:180px; height: 150px;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (10).png' %}" alt="Image 8" style="width:180px;; height: 150px;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (8).png' %}" alt="Image 9" style="width: 180px; height: 150px;">
+    </div>
+  
+    <div style="width: 200px; height: 200px; margin: 10px;">
+      <img src="{% static 'C:\Users\alanp\OneDrive\Desktop\new project\buynow_pro\static\uploads\logos\pngwing.com (11).png' %}" alt="Image 9"style="width: 180px; height: 150px;">
+    </div>
+  
+  
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<footer style="background-color: #efefef;" class="text-center text-lg-start  text-dark">
+    <section class="container d-flex justify-content-center justify-content-lg-between p-4">
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <div>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-facebook"></i></a>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-twitter"></i></a>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-google"></i></a>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-instagram"></i></a>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="" class="me-4 text-reset"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </section>
+
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4"><i class="fa fa-cart-plus"></i> BuyNow</h6>
+            <p>
+              BuyNow.com is a one stop destination for your family's fashion needs.
+               We give you the opportunity to give your wardrobe a makeover with the latest collections from our top brands.
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Make Money with Us</h6>
+            <p><a href="#!" class="text-reset">Sell on BuyNow</a></p>
+            <p><a href="#!" class="text-reset">Advertise Your Products</a></p>
+            <p><a href="#!" class="text-reset">Become an Affiliate</a></p>
+            <p><a href="#!" class="text-reset">Fulfilment by BuyNow</a></p>
+          </div>
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+            <p><a href="#!" class="text-reset">FAQ</a></p>
+            <p><a href="#!" class="text-reset">Feedback</a></p>
+            <p><a href="#!" class="text-reset">About Us</a></p>
+            <p><a href="#!" class="text-reset">Contact Us</a></p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-4"> Contact</h6>
+            <p><i class="fa fa-home"></i> Buynow</p>
+            <p><i class="fa fa-envelope"></i> buynow.com</p>
+            <p><i class="fa fa-phone"></i> </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <div class="text-center p-4">
+       <a class="text-reset fw-bold" href=""> buynow.in</a>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
